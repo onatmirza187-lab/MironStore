@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MironStore</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background: radial-gradient(circle at top, #1a1b2e 0%, #0f1015 100%);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1{
+    color: #ffffff;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-top: 50px;
+    margin-bottom: 30px; 
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+    gap: 20px;               
+    flex-wrap: wrap;         
+    padding: 20px;
+}
+
+.card{
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    text-align: left; /* Kart içindeki yazılar sola yatık daha düzenli durur */
+}
+
+/* Hesap Resimlerinin Ayarı */
+.account-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover; /* Resmi kutuya düzgünce sığdırır */
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2); /* Resim yokken arkada duracak koyuluk */
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+.card p {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #ffdd00; /* Fiyatı dikkat çeksin diye sarı yaptık */
+    text-align: center;
+}
+
+/* Satın al butonunun tasarımı */
+.buy-btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #7928ca;
+    border: none;
+    padding: 12px 0; 
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%; 
+    text-decoration: none; 
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.buy-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+.features-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+.faq-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.faq-section h2 {
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.faq-item {
+    text-align: left;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-item h4 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.faq-item p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 1200px;
+    margin: 40px auto 20px auto;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: 900; 
+    color: #fff;
+    font-family: 'Impact', 'Arial Black', sans-serif; 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2); 
+    letter-spacing: 3px; 
+}
+.logo-img {
+    height: 85px !important; /* Buradaki sayıyı arttırarak daha da büyütebilirsin */
+    width: auto;
+    vertical-align: middle;
+    margin-right: 15px;
+    display: inline-block;
+}
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(224, 34, 34, 0.3) !important;
+}
+body {
+    background: radial-gradient(circle at center, #1c1010 0%, #0a0505 100%) !important;
+}
+/* Satın Al Butonlarını Güzelleştirme */
+.card h3 + a, .card button, .satinal-btn { 
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background: #ffffff !important;
+    color: #0a0505 !important;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease !important;
+}
+
+/* Satın Al Butonuna Fareyle Gelindiğinde (Hover) */
+.card h3 + a:hover, .card button:hover, .satinal-btn:hover {
+    background: #e02222 !important; /* Logonun kırmızısı */
+    color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(224, 34, 34, 0.6) !important;
+    transform: scale(1.02);
+}
+
+/* Sağ Üstteki Discord Butonunu Gerçek Buton Yapma */
+.discord-btn {
+    background: #5865F2 !important; /* Discord Orijinal Moru */
+    color: #ffffff !important;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(88, 101, 242, 0.2);
+}
+
+/* Discord Butonuna Fareyle Gelindiğinde */
+.discord-btn:hover {
+    background: #4752c4 !important;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.5) !important;
+    transform: translateY(-2px);
+}
+/* 1. Yazı Tipi Ayarı */
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* 2. Fiyat Alanını Parlatma */
+.card h3 {
+    background: rgba(224, 34, 34, 0.1) !important;
+    color: #ff4d4d !important;
+    padding: 8px 15px !important;
+    border-radius: 6px !important;
+    display: inline-block !important;
+    margin: 15px 0 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(224, 34, 34, 0.5) !important;
+    border: 1px solid rgba(224, 34, 34, 0.2) !important;
+}
+
+/* 3. Rozet Tasarımı */
+.card {
+    position: relative !important;
+}
+
+.rozet {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    background: #2ecc71 !important;
+    color: #ffffff !important;
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5) !important;
+    z-index: 10 !important;
+}
+/* Kartların Hover Efektini Zirveye Çıkarma */
+.card:hover {
+    transform: translateY(-10px) scale(1.01) !important;
+    box-shadow: 0 15px 35px rgba(224, 34, 34, 0.4) !important;
+    border-color: rgba(224, 34, 34, 0.6) !important;
+}
+
+/* Discord Butonu İçin Nabız (Büyüme-Küçülme) Animasyonu */
+@keyframes discordPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(88, 101, 242, 0.6); }
+    100% { transform: scale(1); }
+}
+
+.discord-btn {
+    animation: discordPulse 2s infinite ease-in-out;
+}
+/* Fareyle üzerine gelince animasyon dursun, rahat tıklansın diye */
+.discord-btn:hover {
+    animation-play-state: paused;
+}
+/* Sayfa Yüklenme Ekranı Tasarımı */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0505; /* Arka plan renginle uyumlu */
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Dönen Oyuncu Halkası */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #1c1010;
+    border-top: 5px solid #ff4d4d; /* Fiyat alanındaki kırmızı rengin */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Yüklenirken arkadaki ana sayfa kaymasın diye */
+.preload-overflow {
+    overflow: hidden !important;
+}
+/* Dinamik Duyuru Panosu */
+.duyuru-panosu {
+    background: linear-gradient(90deg, #ff4d4d, #cc1111);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    z-index: 999;
+}
+
+/* Kayan Yazı Animasyonu */
+.duyuru-metni {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: kayanYazi 15s linear infinite;
+}
+
+@keyframes kayanYazi {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Fareyle üzerine gelince yazı dursun (okumak için) */
+.duyuru-panosu:hover .duyuru-metni {
+    animation-play-state: paused;
+}
+/* Canlı Destek Butonu Tasarımı */
+.canli-destek-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #00b4db, #0083b0); /* Canlı mavi tonları */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 180, 219, 0.4);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+/* Üzerine gelindiğinde büyüme efekti */
+.canli-destek-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 25px rgba(0, 180, 219, 0.6);
+}
+
+/* İçindeki mesaj ikonunun boyutu */
+.canli-destek-btn i {
+    font-size: 24px;
+}
+</style>
+
+</head>
+
+<body>
+    <div id="preloader">
+    <div class="loader"></div>
+</div>
+<div class="duyuru-panosu">
+    <div class="duyuru-metni">
+        🔥 İNDİRİM BAŞLADI!• 📢 DISCORD SUNUCUMUZA KATILMAYI UNUTMAYIN, ÇEKİLİŞLER YAKINDA! • ⚡ ANINDA TESLİMAT VE GÜVENLİ TİCARETİN ADRESİ!
+    </div>
+</div>
+
+<div class="header">
+    <div class="logo">
+    <img src="https://i.hizliresim.com/obrfo3w.png" alt="MironStore Logo" class="logo-img">
+    MironStore
+</div>
+    <a href="https://discord.gg/A66guYY9" class="discord-btn">💬 Discord Sunucumuz</a>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <span class="rozet">Anında Teslimat</span>
+        <img src="hesap1.png" alt="Hesap Görseli" class="account-img">
+        <h2>20 Level Mail Değişen Hesap</h2>
+        <p>• Lig: Random<br>• Skin Yok<br>• İlk mail mevcut, güvenli hesap.</p>
+        <h3>250 TL</h3>
+        <a href="https://discord.gg/MPVx5GY3a6" target="_blank" class="buy-btn">Satın Al</a>
+    </div>
+
+    <div class="card">
+        <span class="rozet">Anında Teslimat</span>
+        <img src="hesap2.png" alt="Hesap Görseli" class="account-img">
+        <h2>Dia Hesap Mail değişen</h2>
+        <p>• Lig:Dia<br>• Mail değişir<br>• Bazı Ajanlar Açık - Skin yok</p>
+        <h3>380 TL</h3>
+        <a href="https://discord.gg/MPVx5GY3a6" target="_blank" class="buy-btn">Satın Al</a>
+    </div>
+
+    <div class="card">
+        <span class="rozet">Anında Teslimat</span>
+        <img src="hesap3.png" alt="Hesap Görseli" class="account-img">
+        <h2>Dia Hesap</h2>
+        <p>• Lig:Dia<br>•Mail değişir - Güvenilir<br>•bazı ajanlar açık - Skin yok</p>
+        <h3>380 TL</h3>
+        <a href="https://discord.gg/MPVx5GY3a6" target="_blank" class="buy-btn">Satın Al</a>
+    </div>
+
+    <div class="card">
+        <span class="rozet">Anında Teslimat</span>
+        <img src="hesap4.png" alt="Hesap Görseli" class="account-img">
+        <h2>Yücelik Hesap</h2>
+        <p>• Lig: Yücelik <br>•Mail değişir - Güvenilir<br>•Bazı ajanlar açık - Skin yok</p>
+        <h3>675 TL</h3>
+        <a href="https://discord.gg/MPVx5GY3a6" target="_blank" class="buy-btn">Satın Al</a>
+    </div>
+
+</div> 
+<div class="features-section">
+    <div class="feature-card">
+        <h3>⚡ Hızlı Teslimat</h3>
+        <p>Satın aldığınız hesaplar Discord üzerinden anında ve güvenli bir şekilde teslim edilir.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🛡️ Güvenli Alışveriş</h3>
+        <p>Tüm hesaplarımız ilk mail güvencesiyle ve test edilerek satışa sunulur.</p>
+    </div>
+    <div class="feature-card">
+        <h3>💬 7/24 Destek</h3>
+        <p>Aklınıza takılan bir şey mi var? Discord sunucumuzdan bize her an ulaşabilirsiniz.</p>
+    </div>
+</div>
+
+<div class="faq-section">
+    <h2>Sıkça Sorulan Sorular</h2>
+    <div class="faq-item">
+        <h4>Hesaplar ne zaman teslim edilir?</h4>
+        <p>Satın al butonuna basıp Discord sunucumuza geldikten sonra açacağınız destek talebiyle birlikte dakikalar içinde teslimat yapılır.</p>
+    </div>
+    <div class="faq-item">
+        <h4>Hesaplarda sorun yaşarsam ne olacak?</h4>
+        <p>Yaşayacağınız her türlü teknik problemde destek ekibimiz size anında yardımcı olur ve telafi sağlar.</p>
+    </div>
+</div>
+<div class="footer">
+    <p>© 2026 MironStore. Tüm Hakları Saklıdır. Bu site Valorant (Riot Games) ile resmi bir bağlantıya sahip değildir.</p>
+</div>
+<a href="https://discord.gg/crupJuFp" class="canli-destek-btn" title="Canlı Destek">
+    <i class="fas fa-comments"></i>
+</a>
+</body>
+<script>
+    // Sayfa tamamen yüklendiğinde preloader'ı kapatır
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        document.body.classList.remove('preload-overflow');
+    });
+    // Sayfa açılır açılmaz kaydırmayı engellemek için body'e sınıf ekle
+    document.body.classList.add('preload-overflow');
+</script>
+</html>
